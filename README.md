@@ -2,7 +2,7 @@
 
 Interactive EEG/ERP simulation dashboard built in Julia on top of **UnfoldSim.jl**, with a reactive web UI powered by **Bonito.jl** and **WGLMakie.jl**.
 
-This project was developed in the context of the University of Stuttgart Fachpraktikum to make simulation-driven EEG experimentation easier for first-time and non-programming users.
+This project was developed in the context of the University of Stuttgart Fachpraktikum to make simulation-driven EEG experimentation easier for Researchers and First-time users
 
 ---
 
