@@ -1,0 +1,27 @@
+# Julia
+*.jl.cov
+*.jl.*.cov
+*.jl.mem
+
+# Julia package/artifact directories
+.julia/
+
+# Build/output caches
+deps/
+build/
+
+# Environment files
+Manifest.toml
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Generated simulation outputs
+simulation_data.csv
+simulation_events.csv
+unfoldsim_*.jld2
+expexplorer_config.json
