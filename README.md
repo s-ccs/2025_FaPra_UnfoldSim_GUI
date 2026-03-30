@@ -1,49 +1,47 @@
 # UnfoldSimDashboard
 
-Interactive EEG simulation dashboard based on Bonito + WGLMakie + UnfoldSim.
+UnfoldSimDashboard is an interactive EEG simulation dashboard built with Julia using Bonito, WGLMakie, and UnfoldSim.
 
-## Entry point
-Run:
+## Quick start
 
-```julia
-julia --project=. run.jl
-```
-
-If packages are not installed yet, run once before starting:
+1. Install project packages (run once):
 
 ```julia
 julia --project=. -e "using Pkg; Pkg.instantiate()"
 ```
 
-## Project structure
+2. Start the dashboard:
+
+```julia
+julia --project=. run.jl
+```
+
+## What runs when you start
+
+- `run.jl` is the entry point.
+- `run.jl` loads `src/app.jl`, which assembles and starts the application.
+
+## Project structure (simple view)
 
 ```text
 UnfoldSimDashboard/
-├── run.jl                 # Entry point - run this
-├── Project.toml           # Dependencies
-├── README.md              # This file
+├── run.jl                 # Start here
+├── Project.toml           # Julia dependencies
+├── README.md              # Project guide
 └── src/
-    ├── app.jl             # Application assembly (full existing app)
-    ├── types.jl           # Data structures
-    ├── constants.jl       # Global constants
+    ├── app.jl             # App setup and startup
+    ├── types.jl           # Core data structures
+    ├── constants.jl       # Shared constants
     ├── hartmut.jl         # HArtMuT model integration
-    ├── erp_analysis.jl    # ERP metrics and analysis
-    ├── utils.jl           # Helper functions
-    ├── io_system.jl       # File I/O operations
-    ├── viz_utils.jl       # Visualization utilities
+    ├── erp_analysis.jl    # ERP analysis
+    ├── utils.jl           # Utility helpers
+    ├── io_system.jl       # Input/output logic
+    ├── viz_utils.jl       # Plot and visualization helpers
     ├── ui_components.jl   # Reusable UI widgets
-    └── components/
-        ├── app_session.jl
-        ├── event_manager.jl
-        ├── tab_manager.jl
-        ├── simulation_engine.jl
-        ├── main_plot.jl
-        ├── onset_plot.jl
-        ├── topoplot.jl
-        └── sidebar.jl
+    └── components/        # Modular dashboard components
 ```
 
-    ## Notes
+## Notes
 
-    - `run.jl` includes `src/app.jl` as the main startup path.
-    - The app is already modularized under `src/components/` and these files are actively used.
+- The app is already modularized under `src/components/`.
+- You can run everything from the project root with the commands above.
