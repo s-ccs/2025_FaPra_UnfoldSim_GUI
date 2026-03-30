@@ -116,38 +116,8 @@ julia --project=. run.jl
 
 ---
 
-## 5) How to use the app (recommended order)
 
-The sidebar is organized into numbered sections:
-
-1. **Event Definition**
-    - Add categorical/continuous variables from templates or custom inputs.
-
-2. **Design Configuration**
-    - Choose single-subject, repeat, or multi-subject design.
-    - Mixed model enforces compatible design.
-
-3. **Component Configuration**
-    - Create/select component tabs and Hanning presets.
-    - Configure formula, basis, contrast coding, beta/sigma/projection controls.
-
-4. **Onset Configuration**
-    - Pick `No Onset`, `Uniform`, or `Log Normal` and tune parameters.
-
-5. **Global Noise**
-    - Set noise type and level.
-
-6. **Data Management**
-    - Download config JSON
-    - Download simulation CSV files
-    - Save `.jld2` simulation object
-    - Upload a saved simulation CSV to restore settings
-
-As you interact with controls, the center and right panels update reactively.
-
----
-
-## 6) Outputs and saved files
+## 5) Outputs and saved files
 
 Depending on the action in section 5 of the sidebar:
 
@@ -162,9 +132,9 @@ Files are saved relative to the current working directory (usually project root 
 
 ---
 
-## 7) Detailed architecture
+## 6) Detailed architecture
 
-### 7.1 Runtime entry flow
+### 6.1 Runtime entry flow
 
 - `run.jl` → includes `src/app.jl`
 - `src/app.jl`:
@@ -174,7 +144,7 @@ Files are saved relative to the current working directory (usually project root 
   - wires reactivity and handlers,
   - returns the final Bonito app layout.
 
-### 7.2 State model
+### 6.2 State model
 
 `AppState` (in `src/types.jl`) is the central state container. It holds:
 
@@ -186,7 +156,7 @@ Files are saved relative to the current working directory (usually project root 
 - data-management controls,
 - theme state.
 
-### 7.3 Simulation cycle
+### 6.3 Simulation cycle
 
 Core simulation logic is in `src/components/simulation_engine.jl`:
 
@@ -200,7 +170,7 @@ Core simulation logic is in `src/components/simulation_engine.jl`:
 
 ---
 
-## 8) Full project structure (expanded)
+## 7) Full project structure (expanded)
 
 ```text
 UnfoldSimDashboard/
@@ -231,26 +201,7 @@ UnfoldSimDashboard/
 
 ---
 
-## 9) What first-time contributors should know
-
-1. **Initialization order matters** in `src/components/app_session.jl`:
-    - plots/components are initialized in a specific sequence before full DOM assembly.
-
-2. **Most UI behavior is reactive**:
-    - prefer updating `Observable`s/state over imperative DOM mutations.
-
-3. **Model/design constraints are intentional**:
-    - mixed model with incompatible design is blocked by validation logic.
-
-4. **State restoration relies on metadata**:
-    - upload flow expects metadata embedded in exported events CSV.
-
-5. **Theme support touches JS + Makie objects**:
-    - changes may require updates in both CSS variables and plot color updates.
-
----
-
-## 10) Troubleshooting
+## 8) Troubleshooting
 
 ### Packages fail to resolve
 
@@ -278,7 +229,7 @@ julia --project=. -e "using Pkg; Pkg.instantiate(); Pkg.precompile()"
 
 ---
 
-## 11) Notes
+## 9) Notes
 
 - This repository is focused on GUI-driven EEG simulation and exploration.
 - The implementation is modular: component files in `src/components/` are actively used by `src/app.jl`.
